@@ -22,7 +22,7 @@ public interface ConsultaDAO {
 
     public List ConsultaCCT(String cct) throws Exception;
 
-    public List ConsultaCarreras() throws Exception;
+    public List ConsultaCarreras(String nivel) throws Exception;
 
     public List verificaRegistroArchivo(String cct) throws Exception;
 

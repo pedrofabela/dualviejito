@@ -369,7 +369,7 @@
                                                                                                 <td class="text-muted"><s:property value="NOMBRE_CARRERA"/></td>
                                                                                                 <td align="center">
                                                                                                     <a href="Javascript:Agregar('AgregarCarrera','<s:property value="CLAVECARRERA"/>','<s:property value="NOMBRE_CARRERA"/>','loadGrdCar')">
-                                                                                                        <i class="fa fa-plus-circle fa-2x" style="color: green;"></i>
+                                                                                                        <i class="fa fa-plus-circle fa-2x" style="color: green;">+</i>
                                                                                                     </a>
                                                                                                 </td>    
                                                                                             </tr>
@@ -409,7 +409,7 @@
                                                                                                     <td class="text-muted"><s:property value="NOMBRE_CARRERA"/></td>
                                                                                                     <td align="center">
                                                                                                         <a href="Javascript:Eliminar('EliminarCarrera','<s:property value="ID_CVE_CAR"/>','loadEliCar')">
-                                                                                                            <i class="fa fa-times fa-2x" style="color: red;"></i>
+                                                                                                            <i class="fa fa-times fa-2x" style="color: red;">-</i>
                                                                                                         </a>
                                                                                                     </td> 
 

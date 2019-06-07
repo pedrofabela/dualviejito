@@ -401,7 +401,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
             if (archiFileName != null) {
 
-                //Constantes.enviaMensajeConsola("--entre a validar el tipo de arcivo.... " + sitio.getTIP_MSJ());
+               // Constantes.enviaMensajeConsola("--entre a validar el tipo de arcivo.... " + sitio.getTIP_MSJ());
                 if ((!archiFileName.contains(".xlsx"))) {
                     archiFileName = "";
                     addFieldError("archiR", "*** La extensión del archivo no es aceptada debe ser (xlsx)***");
@@ -418,6 +418,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                     Constantes.enviaMensajeConsola("paso el banTR");
                     ruta = Constantes.rutaArch + archiFileName;
+                    System.out.println("ruta"+ruta);
                     File newarch = new File(ruta);
                     FileUtils.copyFile(archi, newarch);
 

@@ -30,6 +30,7 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     private String nomModulo;
     private String modulo;
     private String nombreUsuario;
+    private String filtro;
 
     private boolean BanArchivoCarrera = false;
     private boolean BanArchivoResponsables = false;
@@ -113,6 +114,11 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
                 //obteniendo el nombre del usuario
                 nombreUsuario = usuariocons.getNAMEUSUARIO();
+                filtro=usuariocons.getFILTRO();
+                
+                datos.setFILTRO(filtro);
+                        
+                
 
                 modulosAUX = (ArrayList<moduloBean>) acceso.consultaModulosPerfilMenu(usuariocons.getPERFIL(), modulo);
                 modulosAUXP = (ArrayList<moduloAuxBean>) acceso.consultaModulosHijosPerfilMenu(usuariocons.getPERFIL(), modulo);
@@ -221,6 +227,8 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     hombre = 0;
                     mujer = 0;
                     beca = 0;
+                    
+                    System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5");
 
                     ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardGeneral(datos);
 
@@ -270,8 +278,13 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     ListaTotalEstatusUGeneral = con.listaTotalEstatusGeneral(datos);
 
                     ListaMunicipioEscuela = con.listaMunEscGeneral(datos);
+                    
+                    
+                    
                     ListaEmpresasAlumnos = con.listaEmpAluGeneral(datos);
 
+                   
+                    
                     System.out.println("voy a calcular proyectos");
                     ListaProyectos = con.proyectosGeneral(datos);
 
@@ -289,6 +302,8 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     }
 
                     ListaTotalEstatus = con.listaTotalEstatus(datos);
+                     /*aqui me quede */
+                     
                     ListaTotalEsuela = con.listaTotalEscuela(datos);
                     
                     
@@ -321,7 +336,7 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     }
 
                     listaCCT = con.ConsultaCCT(usuariocons.getUSUARIO());
-                    ListaCarreras = con.ConsultaCarreras();
+                    ListaCarreras = con.ConsultaCarreras(filtro);
                     datos.setCCT(usuariocons.getUSUARIO());
                     ObtenerCarreraCCT = (ArrayList<DatosBean>) con.ConsultaCarreraExistente(datos);
 
@@ -1242,6 +1257,14 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
     public void setListaAlumnosReingresos(List<DatosBean> ListaAlumnosReingresos) {
         this.ListaAlumnosReingresos = ListaAlumnosReingresos;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
     
     

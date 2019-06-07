@@ -44,6 +44,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     private String modulo;
     private String nombreUsuario;
     private String tabSelect;
+    private String filtro;
 
     //LISTAS PERSISTENTES DEL MENU
     public List<moduloBean> modulosAUX = new ArrayList<moduloBean>();
@@ -1414,6 +1415,10 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
 
             bantablero = true;
+            
+             filtro=usuariocons.getFILTRO();
+                
+                datos.setFILTRO(filtro);
 
             Constantes.enviaMensajeConsola("FECHA INICIO" + datos.getFECHA_INICIO());
             Constantes.enviaMensajeConsola("FECHA termino" + datos.getFECHA_TERMINO());
@@ -2414,6 +2419,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
     public void setListaAlumnosReingresos(List<DatosBean> ListaAlumnosReingresos) {
         this.ListaAlumnosReingresos = ListaAlumnosReingresos;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
     
     

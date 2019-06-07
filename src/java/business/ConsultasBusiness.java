@@ -36,8 +36,8 @@ public class ConsultasBusiness {
         return lista;
     }
 
-    public List ConsultaCarreras() throws Exception {
-        List lista = this.con.ConsultaCarreras();
+    public List ConsultaCarreras(String nivel) throws Exception {
+        List lista = this.con.ConsultaCarreras(nivel);
         return lista;
     }
 

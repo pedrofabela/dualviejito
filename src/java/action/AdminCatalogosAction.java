@@ -38,6 +38,7 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     private String modulo;
     private String nombreUsuario;
     private String tabSelect;
+      private String filtro;
 
     //LISTAS PERSISTENTES DEL MENU
     public List<moduloBean> modulosAUX = new ArrayList<moduloBean>();
@@ -125,9 +126,10 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         try {
 
             ConsultasBusiness con = new ConsultasBusiness();
-
+            filtro=usuariocons.getFILTRO();
+            
             listaCCT = con.ConsultaCCT(usuariocons.getUSUARIO());
-            ListaCarreras = con.ConsultaCarreras();
+            ListaCarreras = con.ConsultaCarreras(filtro);
             datos.setCCT(usuariocons.getUSUARIO());
             ObtenerCarreraCCT = (ArrayList<DatosBean>) con.ConsultaCarreraExistente(datos);
 
@@ -1015,6 +1017,14 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
 
     public void setBanAsesorHABILITADO(boolean BanAsesorHABILITADO) {
         this.BanAsesorHABILITADO = BanAsesorHABILITADO;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
     
     

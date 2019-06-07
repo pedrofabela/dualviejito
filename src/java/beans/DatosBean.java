@@ -138,6 +138,19 @@ public class DatosBean {
      private String FECHA_REINGRESO;
       private String FECHA_EGRESO;
        private String FECHA_CAMBIO_ESTATUS;
+       
+        private String FILTRO;
+
+    public String getFILTRO() {
+        return FILTRO;
+    }
+
+    public void setFILTRO(String FILTRO) {
+        this.FILTRO = FILTRO;
+    }
+        
+        
+        
 
     public String getFECHA_REINGRESO() {
         return FECHA_REINGRESO;
