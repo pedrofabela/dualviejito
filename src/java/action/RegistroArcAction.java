@@ -2441,14 +2441,14 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                             validatipo_alumno = false;
                         } else {
 
-                            if (TipoAlumno.equals("NUEVO INGRESO")) {
+                            if (TipoAlumno.equals("1")) {
                                 datos.setTIPO_ALUM("1");
                                 validatipo_alumno = true;
-                            } else if (TipoAlumno.equals("REINGRESO")) {
+                            } else if (TipoAlumno.equals("2")) {
                                 datos.setTIPO_ALUM("2");
                                 validatipo_alumno = true;
                             } else {
-                                datos.setDESERROR("EL TIPO DE ALUMNO  EN LA FILA  " + (fila) + " NO COINCIDE CON NINGUNA DE LAS OPCIONES DEBE SER (NUEVO INGRESO O REINGRESO), FAVOR DE VERIFICAR LOS DATOS");
+                                datos.setDESERROR("EL TIPO DE ALUMNO  EN LA FILA  " + (fila) + " NO COINCIDE CON NINGUNA DE LAS OPCIONES DEBE SER (1 PARA NUEVO INGRESO O 2 PARA REINGRESO), FAVOR DE VERIFICAR LOS DATOS");
                                 validatipo_alumno = false;
                             }
 
@@ -2789,7 +2789,22 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         datos.setPROMEDIOGRAL(contenidoCelda);
                     }
                     if (fila >= 2 && columna == 15) {
-                        datos.setSITUACIONACA(contenidoCelda);
+                   
+                        
+                        String situacion="";
+                        
+                      situacion=  contenidoCelda;
+                      
+                      if(situacion.equals("1"))
+                              {
+                                 datos.setSITUACIONACA("1");
+                              }
+                          if(situacion.equals("2"))
+                              {
+                                 datos.setSITUACIONACA("2");
+                              }
+                        
+                        
                     }
                     if (fila >= 2 && columna == 16) {
 
@@ -2797,10 +2812,10 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                         TipoAlumno = contenidoCelda;
 
-                        if (TipoAlumno.equals("NUEVO INGRESO")) {
+                        if (TipoAlumno.equals("1")) {
                             datos.setTIPO_ALUM("1");
 
-                        } else if (TipoAlumno.equals("REINGRESO")) {
+                        } else if (TipoAlumno.equals("1")) {
                             datos.setTIPO_ALUM("2");
 
                         }
