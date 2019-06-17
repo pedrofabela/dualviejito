@@ -66,7 +66,7 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
        public List<DatosBean> ListaAvanceMetas = new ArrayList<DatosBean>();
          public List<DatosBean> ListaAlumnosNuevos = new ArrayList<DatosBean>();
            public List<DatosBean> ListaAlumnosReingresos = new ArrayList<DatosBean>();
-
+ public List<DatosBean> ListaSINO = new ArrayList<DatosBean>();
     private boolean bantablero = false;
 
     //SESSIN USUARIO	
@@ -377,8 +377,8 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                                 ListaAlumnos = (ArrayList<DatosBean>) con.listaAlumnos(datos);
                                 ListaTipoAlumno = con.ConsultaTipoAlumno();
                                 ListaAlumnosBeca = (ArrayList<DatosBean>) con.listaAlumnosBeca(datos);
-
-                               
+                               ListaSINO = con.sino();
+                                System.out.println("SINO"+ListaSINO.size());
                     
 
                                 return "SUCCESS2";
@@ -1265,6 +1265,14 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
     public void setFiltro(String filtro) {
         this.filtro = filtro;
+    }
+
+    public List<DatosBean> getListaSINO() {
+        return ListaSINO;
+    }
+
+    public void setListaSINO(List<DatosBean> ListaSINO) {
+        this.ListaSINO = ListaSINO;
     }
     
     

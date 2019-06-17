@@ -239,16 +239,16 @@
                                                                 <div class="collapse navbar-collapse" id="navbarResponsive">
                                                                     <ul class="navbar-nav ml-auto">
                                                                         <li class="nav-item mx-0 mx-lg-1">
-                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cc">Administrar Carreras</a>
+                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="text-decoration: none; font-size: 12px;"  href="#cc">Administrar Carreras</a>
                                                                         </li>
                                                                         <li class="nav-item mx-0 mx-lg-1">
-                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cr">Administrar Responsables DUAL</a>
+                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="text-decoration: none; font-size: 12px;"  href="#cr">Administrar Responsables DUAL</a>
                                                                         </li>
                                                                         <li class="nav-item mx-0 mx-lg-1">
-                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cri">Administrar Asesores Institucionales DUAL</a>
+                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="text-decoration: none; font-size: 12px;"  href="#cri">Administrar Asesores Institucionales DUAL</a>
                                                                         </li>
                                                                         <li class="nav-item mx-0 mx-lg-1">
-                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Javascript:Accion('ReturnStar')">Inicio</a>
+                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="text-decoration: none; font-size: 12px;"  href="Javascript:Accion('ReturnStar')">Inicio</a>
                                                                         </li>
 
                                                                         <li class="nav-item dropdown no-arrow">
@@ -279,7 +279,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <h5 >Cargando Datos..</h5>
+                                                                    <h5  style="color: white;">Cargando Datos..</h5>
                                                                 </div> 
                                                             </div>    
                                                         </div>   
@@ -290,7 +290,7 @@
                                                             <div class="container"  >
                                                                 <div class="modal-content" style="border-radius: 10px;">
                                                                     <div class="modal-header bg-secondary col-lg-12">
-                                                                        <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> ADMINISTRACION DE CATÁLOGOS (SISTEMA DUAL)</h4> 
+                                                                        <h4 align="center"  style="color: #ffffff; font-size: 16px;"> <i class="fas fa-book"></i> ADMINISTRACION DE CATÁLOGOS (SISTEMA DUAL)</h4> 
                                                                         <br/>
                                                                     </div>  
                                                                     <div class="modal-body "  >
@@ -384,7 +384,7 @@
                                                                                                 <td class="text-muted"><s:property value="NOMBRE_CARRERA"/></td>
                                                                                                 <td align="center">
                                                                                                     <a href="Javascript:Agregar('AgregarCarreraA','<s:property value="CLAVECARRERA"/>','<s:property value="NOMBRE_CARRERA"/>','loadGrdCar')">
-                                                                                                        <i class="fa fa-plus-circle fa-2x" style="color: green;">+</i>
+                                                                                                        <i class="fa fa-plus-circle fa-2x" style="color: green;"></i>
                                                                                                     </a>
                                                                                                 </td>    
                                                                                             </tr>
@@ -424,7 +424,7 @@
                                                                                                     <td class="text-muted"><s:property value="NOMBRE_CARRERA"/></td>
                                                                                                     <td align="center">
                                                                                                         <a href="Javascript:Eliminar('EliminarCarreraA','<s:property value="ID_CVE_CAR"/>','loadEliCar')">
-                                                                                                            <i class="fa fa-times fa-2x" style="color: red;">-</i>
+                                                                                                            <i class="fa fa-times fa-2x" style="color: red;"></i>
                                                                                                         </a>
                                                                                                     </td> 
 

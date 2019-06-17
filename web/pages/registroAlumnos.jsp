@@ -333,7 +333,7 @@
                                                                 <label class="col-form-label text-muted" for="SituacionAca">SITUACION ACADEMICA: </label>
                                                                 <div class="col-sm-auto">
                                                                     
-                                                                    <s:select  name="al.SITUACIONACA" id="al.SITUACIONACA"  list="#{'1':'REGULAR', '2':'IRREGULAR'}"     headerKey="" headerValue="--SELECCIONE--" cssClass="form-control " ></s:select>                                                                  
+                                                                    <s:select  name="al.SITUACIONACA" id="al.SITUACIONACA"  list="{'1':'REGULAR','2':'IRREGULAR'}"     headerKey="" headerValue="--SELECCIONE--" cssClass="form-control " ></s:select>                                                                  
                                                                     <s:fielderror fieldName="ErrorSituacioAca" cssClass="alert alert-danger"/>
                                                                 </div> 
                                                             </div> 

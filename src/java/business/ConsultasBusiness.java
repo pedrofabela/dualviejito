@@ -175,6 +175,10 @@ public class ConsultasBusiness {
         List lista = this.con.listaMunicipios();
         return lista;
     }
+     public List sino() throws Exception {
+        List lista = this.con.sino();
+        return lista;
+    }
 
     public List listaAlumnos(DatosBean datos) throws Exception {
         List lista = this.con.listaAlumnos(datos);
@@ -193,6 +197,10 @@ public class ConsultasBusiness {
 
     public boolean actualizarAlumno(DatosBean datos) throws Exception {
         return con.actualizarAlumno(datos);
+
+    }
+     public boolean actualizarAlumnoEgreso(DatosBean datos) throws Exception {
+        return con.actualizarAlumnoEgreso(datos);
 
     }
 

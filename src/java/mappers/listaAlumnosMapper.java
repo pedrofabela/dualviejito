@@ -157,6 +157,31 @@ public class listaAlumnosMapper implements Mapper {
         } else {
             dat.setFECHA_INGRESO_DUAL(rs.getString("FECHA_INGRESO_DUAL"));
         }
+         if (rs.getString("STATUS") != null) {
+            dat.setSTATUS(rs.getString("STATUS").trim());
+        } else {
+            dat.setSTATUS(rs.getString("STATUS"));
+        }
+          if (rs.getString("FECHA_CONTRATA") != null) {
+            dat.setFECHA_CONTRATA(rs.getString("FECHA_CONTRATA").trim());
+        } else {
+            dat.setFECHA_CONTRATA(rs.getString("FECHA_CONTRATA"));
+        }
+           if (rs.getString("FECHA_CONTRATA") != null) {
+            dat.setFECHA_CONTRATA(rs.getString("FECHA_CONTRATA").trim());
+        } else {
+            dat.setFECHA_CONTRATA(rs.getString("FECHA_CONTRATA"));
+        }
+            if (rs.getString("CONTRATO_UE") != null) {
+            dat.setCONTRATO_UE(rs.getString("CONTRATO_UE").trim());
+        } else {
+            dat.setCONTRATO_UE(rs.getString("CONTRATO_UE"));
+        }
+            if (rs.getString("PERFIL_ESTUDIO") != null) {
+            dat.setPERFIL_ESTUDIO(rs.getString("PERFIL_ESTUDIO").trim());
+        } else {
+            dat.setPERFIL_ESTUDIO(rs.getString("PERFIL_ESTUDIO"));
+        }
 
         return dat;
 

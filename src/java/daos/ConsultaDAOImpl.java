@@ -45,6 +45,7 @@ import mappers.listaBecasMapper;
 import mappers.listaMunicipiosMapper;
 import mappers.munEscMapper;
 import mappers.proyectoTotalMapper;
+import mappers.sinoMapper;
 import mappers.totalAluEscuela;
 import mappers.totalEstatusColorMapper;
 import mappers.totalEstatusMapper;
@@ -595,11 +596,18 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         list = queryForList(query, (Mapper) new listaMunicipiosMapper());
         return list;
     }
+     public List sino() throws Exception {
+        String query = "select * FROM TAB_SINO";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new sinoMapper());
+        return list;
+    }
 
     public List listaAlumnos(DatosBean datos) throws Exception {
         String query = "SELECT CA.ID_ALUMNO, CA.MATRICULA,CA.CURP,CA.NOMBRE,CA.APELLIDOP,CA.APELLIDOM,CA.NOMBRE ||' ' ||CA.APELLIDOP ||' ' ||CA.APELLIDOM AS NOMBRE_COMPLETO,CA.GENERO,CA.FECHA_NAC,CA.DOMICILIO,CA.COLONIA,CA.CP,CA.TELEFONO,CA.CORREO,(SELECT C.NOM_CAR  FROM CAT_CARRERA_CCT C WHERE c.cve_car=ca.CVE_CARRERA AND C.CCT=CA.CCT  ) AS CARRERA, "
-                + "CA.GRADO, CA.PROMEDIO, CA.SITUACION_ACA, CA.TIPO_ALUMNO,CA.MUNICIPIO,(SELECT M.NOM_MUN FROM CAT_MUNICIPIOS M WHERE M.ID=CA.MUNICIPIO) AS NOMMUNICIPIO,CA.CCT ,CA.AVANCE,CA.FECHA_INGRESO_DUAL "
-                + "FROM CAT_ALUMNOS CA  WHERE CA.CCT='" + datos.getCCT() + "' AND CA.STATUS='1' ORDER BY ca.cve_carrera ASC";
+                + "CA.GRADO, CA.PROMEDIO, CA.SITUACION_ACA, CA.TIPO_ALUMNO,CA.MUNICIPIO,(SELECT M.NOM_MUN FROM CAT_MUNICIPIOS M WHERE M.ID=CA.MUNICIPIO) AS NOMMUNICIPIO,CA.CCT ,CA.AVANCE,CA.FECHA_INGRESO_DUAL, CA.STATUS, TO_CHAR(CA.FECHA_CONTRATA,'DD/MM/YYYY' ) AS FECHA_CONTRATA, CA.CONTRATO_UE, CA.PERFIL_ESTUDIO "
+                + "FROM CAT_ALUMNOS CA  WHERE CA.CCT='" + datos.getCCT() + "'  ORDER BY ca.cve_carrera ASC";
         Constantes.enviaMensajeConsola("Consulta ALUMNOS----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new listaAlumnosMapper());
@@ -653,6 +661,29 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("FECHA_INGRESO_DUAL", "STRING", datos.getFECHA_INGRESO_DUAL());
         arregloCampos.add(temporal);
+
+        String Condicion;
+        Condicion = " WHERE CURP='" + datos.getCURP() + "'";
+
+        //Se terminan de adicionar a nuesto ArrayLis lbjos oetos
+        //Ejecutar la funcion del OracleDAOFactory queryInsert
+        return oraDaoFac.queryUpdate("CAT_ALUMNOS", arregloCampos, Condicion);
+    }
+    
+    public boolean actualizarAlumnoEgreso(DatosBean datos) throws Exception {
+        //Crear un ArrayList para agregar los campos a insertar
+        ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
+        ObjPrepareStatement temporal;
+        //Constantes.enviaMensajeConsola("Entre al DAO del INSERT DATOS...................................");
+        //En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
+        // Integer a=Integer.parseInt(correspondencia1.getCANTI1());
+        temporal = new ObjPrepareStatement("FECHA_CONTRATA", "STRING", datos.getFECHA_CONTRATA2());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("CONTRATO_UE", "STRING", datos.getCONTRATO_UE2());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("PERFIL_ESTUDIO", "STRING", datos.getPERFIL_ESTUDIO2());
+        arregloCampos.add(temporal);
+        
 
         String Condicion;
         Condicion = " WHERE CURP='" + datos.getCURP() + "'";

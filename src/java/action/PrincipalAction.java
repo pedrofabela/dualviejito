@@ -92,6 +92,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
       public List<DatosBean> ListaAvanceMetas = new ArrayList<DatosBean>();
           public List<DatosBean> ListaAlumnosNuevos = new ArrayList<DatosBean>();   
            public List<DatosBean> ListaAlumnosReingresos = new ArrayList<DatosBean>();
+             public List<DatosBean> ListaSINO = new ArrayList<DatosBean>();
                    
 
     private boolean bantablero = false;
@@ -202,6 +203,57 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             ListaMunicipios = con.listaMunicipios();
             ListaTipoAlumno = con.ConsultaTipoAlumno();
             ListaAlumnos = (ArrayList<DatosBean>) con.listaAlumnos(datos);
+
+            return "SUCCESS";
+
+        } catch (Exception e) {
+            TipoError = "SESSION";
+            TipoException = e.getMessage();
+            return "ERROR";
+        }
+    }
+    
+    
+     public String actualizarAlumnoEgreso() {
+        //validando session***********************************************************************
+        if (session.get("cveUsuario") != null) {
+            String sUsu = (String) session.get("cveUsuario");
+        } else {
+            addActionError("**** La sesi髇 ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+        if (session.containsKey("usuario")) {
+            usuariocons = (usuarioBean) session.get("usuario");
+        } else {
+            addActionError("**** La sesi髇 ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+
+        try {
+
+            ConsultasBusiness con = new ConsultasBusiness();
+
+            Constantes.enviaMensajeConsola("fecha recibe: " + datos.getFECHA_INGRESO_DUAL());
+            
+            System.out.println("checkbox"+datos.getCONTRATO_UE());
+            
+            
+           
+            ListaSINO = con.sino();
+            
+            
+            
+            
+            
+            
+            con.actualizarAlumnoEgreso(datos);
+
+            ListaMunicipios = con.listaMunicipios();
+            ListaTipoAlumno = con.ConsultaTipoAlumno();
+            ListaAlumnos = (ArrayList<DatosBean>) con.listaAlumnos(datos);
+            
+           
+
 
             return "SUCCESS";
 
@@ -2427,6 +2479,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
     public void setFiltro(String filtro) {
         this.filtro = filtro;
+    }
+
+    public List<DatosBean> getListaSINO() {
+        return ListaSINO;
+    }
+
+    public void setListaSINO(List<DatosBean> ListaSINO) {
+        this.ListaSINO = ListaSINO;
     }
     
     

@@ -87,6 +87,7 @@ public interface ConsultaDAO {
 
     //**********************************************************PARTE 2*****************************************************
     public List listaMunicipios() throws Exception;
+    public List sino() throws Exception;
 
     public List listaAlumnos(DatosBean datos) throws Exception;
 
@@ -95,6 +96,7 @@ public interface ConsultaDAO {
     public List listaAlumnos2(DatosBean datos) throws Exception;
 
     public boolean actualizarAlumno(DatosBean datos) throws Exception;
+    public boolean actualizarAlumnoEgreso(DatosBean datos) throws Exception;
 
     public List buscaRFC(String RFC) throws Exception;
 

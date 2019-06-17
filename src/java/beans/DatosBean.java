@@ -90,6 +90,7 @@ public class DatosBean {
 
     private String TOTAL_HOMBRE;
     private String TOTAL_MUJER;
+  
      
     
     // ALUMNOS NUEVO INGRESO SE REFIERE A PROYECTOS  PRUEBA DE CONBINACION
@@ -135,12 +136,136 @@ public class DatosBean {
     
     
     
-     private String FECHA_REINGRESO;
-      private String FECHA_EGRESO;
-       private String FECHA_CAMBIO_ESTATUS;
-       
-        private String FILTRO;
+    private String FECHA_REINGRESO;
+    private String FECHA_EGRESO;
+    private String FECHA_CAMBIO_ESTATUS;
 
+    private String FILTRO;
+    private String FECHA_CONTRATA;
+    private String CONTRATO_UE;
+    private String PERFIL_ESTUDIO;
+     private String OPSI;
+   private String FECHA_CONTRATA2;
+     private String CONTRATO_UE2;
+    private String PERFIL_ESTUDIO2;
+     private String OPSI2;
+     
+     
+     
+     
+      private String OPNO;
+       private String ID_OP;
+        private String OP;
+
+    public String getFECHA_CONTRATA2() {
+        return FECHA_CONTRATA2;
+    }
+
+    public void setFECHA_CONTRATA2(String FECHA_CONTRATA2) {
+        this.FECHA_CONTRATA2 = FECHA_CONTRATA2;
+    }
+        
+        
+        
+
+    public String getCONTRATO_UE2() {
+        return CONTRATO_UE2;
+    }
+
+    public void setCONTRATO_UE2(String CONTRATO_UE2) {
+        this.CONTRATO_UE2 = CONTRATO_UE2;
+    }
+
+    public String getPERFIL_ESTUDIO2() {
+        return PERFIL_ESTUDIO2;
+    }
+
+    public void setPERFIL_ESTUDIO2(String PERFIL_ESTUDIO2) {
+        this.PERFIL_ESTUDIO2 = PERFIL_ESTUDIO2;
+    }
+
+    public String getOPSI2() {
+        return OPSI2;
+    }
+
+    public void setOPSI2(String OPSI2) {
+        this.OPSI2 = OPSI2;
+    }
+
+        
+        
+    public String getID_OP() {
+        return ID_OP;
+    }
+
+    public void setID_OP(String ID_OP) {
+        this.ID_OP = ID_OP;
+    }
+
+    public String getOP() {
+        return OP;
+    }
+
+    public void setOP(String OP) {
+        this.OP = OP;
+    }
+        
+        
+        
+
+    public String getOPSI() {
+        return OPSI;
+    }
+
+    public void setOPSI(String OPSI) {
+        this.OPSI = OPSI;
+    }
+
+    public String getOPNO() {
+        return OPNO;
+    }
+
+    public void setOPNO(String OPNO) {
+        this.OPNO = OPNO;
+    }
+      
+      
+      
+      
+
+    public String getFECHA_CONTRATA() {
+        return FECHA_CONTRATA;
+    }
+
+    public void setFECHA_CONTRATA(String FECHA_CONTRATA) {
+        this.FECHA_CONTRATA = FECHA_CONTRATA;
+    }
+
+    public String getCONTRATO_UE() {
+        return CONTRATO_UE;
+    }
+
+    public void setCONTRATO_UE(String CONTRATO_UE) {
+        this.CONTRATO_UE = CONTRATO_UE;
+    }
+
+    public String getPERFIL_ESTUDIO() {
+        return PERFIL_ESTUDIO;
+    }
+
+    public void setPERFIL_ESTUDIO(String PERFIL_ESTUDIO) {
+        this.PERFIL_ESTUDIO = PERFIL_ESTUDIO;
+    }
+    
+    
+    
+    
+
+        
+        
+        
+        
+        
     public String getFILTRO() {
         return FILTRO;
     }

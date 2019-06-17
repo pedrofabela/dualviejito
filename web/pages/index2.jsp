@@ -238,18 +238,22 @@
                                                               <div class="collapse navbar-collapse" id="navbarResponsive">
                                                                   <ul class="navbar-nav ml-auto">
                                                                       <li class="nav-item mx-0 mx-lg-1">
-                                                                          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Javascript:Accion('FormAlumn')">Registrar Alumno</a>
+                                                                          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="text-decoration: none; font-size: 12px;" href="Javascript:Accion('FormAlumn')">Registrar Alumno</a>
                                                                       </li>
 
                                                                       <li class="nav-item mx-0 mx-lg-1">
-                                                                          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#ab">Agregar Becas</a>
+                                                                          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="text-decoration: none; font-size: 12px;" href="#ab">Agregar Becas</a>
                                                                       </li>
                                                                       <li class="nav-item mx-0 mx-lg-1">
-                                                                          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Javascript:Accion('AbreTablero')">Tablero de Control</a>
+                                                                          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="text-decoration: none; font-size: 12px;" href="Javascript:Accion('AbreTablero')">Tablero de Control</a>
                                                                       </li>
 
                                                                       <li class="nav-item mx-0 mx-lg-1">
-                                                                          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Javascript:Accion('AdminCat')">Administrar Catalogos</a>
+                                                                          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="text-decoration: none; font-size: 12px;" href="Javascript:Accion('AdminCat')">Administrar Catalogos</a>
+                                                                      </li>
+                                                                      
+                                                                      <li class="nav-item mx-0 mx-lg-1">
+                                                                          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="text-decoration: none; font-size: 12px;" href="Javascript:Accion('egresados')">Seguimiento a Egresados</a>
                                                                       </li>
 
                                                                       <li class="nav-item dropdown no-arrow">
@@ -280,7 +284,7 @@
                                                                               </div>
                                                                           </div>
                                                                       </div>
-                                                                      <h5 >Cargando Datos..</h5>
+                                                                      <h5 style="color:white;" >Cargando Datos..</h5>
                                                                   </div> 
                                                               </div>    
                                                           </div>   
@@ -302,7 +306,7 @@
                                                               <div class="container-fluid"  >
                                                                   <div class="modal-content" style="border-radius: 10px;">
                                                                       <div class="modal-header bg-secondary col-lg-12">
-                                                                          <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> REGISTRO DE PROYECTOS (SISTEMA DUAL)</h4> 
+                                                                          <div style="width: 100%; height: 30px; font-size: 18px; color: white; text-align: center; "> Registro de convenio de aprendizaje</div>
                                                                           <br/>
                                                                       </div>  
                                                                       <div class="modal-body">                                              
@@ -332,7 +336,7 @@
                                                                               <br/>
                                                                               <br/>
                                                                               <br/>
-                                                                              <div class="table-wrapper-scroll-y col-lg-12">  
+                                                                              <div class="table-wrapper-scroll-y col-lg-12" style="margin-top: 35px;">  
                                                                                   <table class="table table-hover">
                                                                                       <thead>
                                                                                           <tr class="bg-secondary" style="font-size: 75%;">
@@ -348,6 +352,9 @@
                                                                                       <tbody class='buscar'>
 
                                                                                           <s:iterator value="ListaAlumnos" id="ListaAlumnos" status="stat">
+                                                                                             
+                                                                                              <s:if test="STATUS==1">
+                                                                                              
                                                                                               <tr style="color: #666; font-size: 70%;">
                                                                                                   <td  ><s:property value="CURP"/></td>
                                                                                                   <td  ><s:property value="MATRICULA"/></td>
@@ -355,12 +362,12 @@
                                                                                                   <td  ><s:property value="NOMBRE_CARRERA"/></td>
                                                                                                   <td   style="width: 15%;"><s:if test="AVANCE=='100'">
                                                                                                           <div style="width: 80%"> 
-                                                                                                              <div style="width: 50%; height: 25px; background: green; color: #ffffff; border-radius: 0px 5px 5px 0px; box-shadow: 2px 2px 2px #666;">100% </div>                                                                             
+                                                                                                              <div style="width: 80%; height: 25px; background: green; color: #ffffff; border-radius: 0px 5px 5px 0px; box-shadow: 2px 2px 2px #666;">100% </div>                                                                             
                                                                                                           </div>   
                                                                                                       </s:if>
                                                                                                       <s:if test="AVANCE=='50'">
                                                                                                           <div style="width: 80%"> 
-                                                                                                              <div style="width: 50%; height: 25px; background: yellow; border-radius: 0px 5px 5px 0px; box-shadow: 2px 2px 2px #666;">50% </div>                                                                                
+                                                                                                              <div style="width: 40%; height: 25px; background: yellow; border-radius: 0px 5px 5px 0px; box-shadow: 2px 2px 2px #666;">50% </div>                                                                                
                                                                                                           </div>    
                                                                                                       </s:if>                                                              
                                                                                                   </td>
@@ -395,6 +402,7 @@
                                                                                                       </a>
                                                                                                   </td>
                                                                                               </tr>  
+                                                                                               </s:if>
 
                                                                                               <s:hidden  name = "ListaAlumnos[%{#stat.index}].MATRICULA" id="MATRICULA"></s:hidden>     
                                                                                               <s:hidden  name = "ListaAlumnos[%{#stat.index}].CURP" id="CURP"></s:hidden>  
@@ -426,6 +434,19 @@
                                                                       </div>                                                                   
                                                                   </div>  
                                                               </div>
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
                                                               <s:textfield  cssClass="form-control" name="datos.CURPA" id="CURPA"  maxlength="200" cssStyle="display:none;"></s:textfield>
                                                                   <br></br>   
                                                                   <br></br>  
@@ -440,7 +461,7 @@
                                                                   <div class="container-fluid"  >
                                                                       <div class="modal-content" style="border-radius: 10px;">
                                                                           <div class="modal-header bg-secondary col-lg-12">
-                                                                              <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> REGISTRO DE BECAS </h4> 
+                                                                             <div style="width: 100%; height: 30px; font-size: 18px; color: white; text-align: center;">Registro de Becas</div>
                                                                               <br/>
                                                                           </div>  
                                                                           <div class="modal-body">                                              
@@ -456,16 +477,16 @@
                                                                                   <br/>
                                                                                   <br/>
                                                                                   <br/>
-                                                                                  <div class="table-wrapper-scroll-y col-lg-12">  
+                                                                                  <div class="table-wrapper-scroll-y col-lg-12" style="margin-top: 35px;">  
                                                                                       <table class="table table-hover">
                                                                                           <thead>
                                                                                               <tr class="bg-secondary" style="font-size: 75%; color: #ffffff;">
-                                                                                                  <th scope="col" >CURP</th>
-                                                                                                  <th scope="col" >Matrícula</th>
-                                                                                                  <th scope="col" >Nombre</th>                                                                                         
-                                                                                                  <th scope="col" >Nombre Carrera</th>
-                                                                                                  <th scope="col" >BECA</th>
-                                                                                                  <th scope="col" >Acciones</th>
+                                                                                                  <th scope="col" align="center" >CURP</th>
+                                                                                                  <th scope="col" align="center" >Matrícula</th>
+                                                                                                  <th scope="col" align="center" >Nombre</th>                                                                                         
+                                                                                                  <th scope="col"  align="center" >Nombre Carrera</th>
+                                                                                                  <th scope="col" align="center" >Beca Registrada</th>
+                                                                                                  <th scope="col" align="center" >Acciones</th>
 
                                                                                               </tr>
                                                                                           </thead>
@@ -480,12 +501,12 @@
                                                                                                   <td   style="width: 15%;">
                                                                                                       <s:if test="BECA=='si'">
                                                                                                           <div style="width: 80%"> 
-                                                                                                              <div style="width: 70%; height: 30px; background: green; color: #ffffff; border-radius: 0px 5px 5px 0px; box-shadow: 2px 2px 2px #666;"> Con Beca Registrada </div>                                                                             
+                                                                                                              <div style="width: 100; text-align: center;"><i class="fa fa-check" style="font-size: 25px; color: green; "></i>  </div>                                                                             
                                                                                                           </div>   
                                                                                                       </s:if>
                                                                                                       <s:if test="BECA=='no'">
                                                                                                           <div style="width: 80%"> 
-                                                                                                              <div style="width: 70%; height: 30px; background: yellow; border-radius: 0px 5px 5px 0px; box-shadow: 2px 2px 2px #666;"> Sin Beca Registrada </div>                                                                                
+                                                                                                              <div style="width: 100; text-align: center;"><i class="fa fa-close" style="font-size: 25px; color: red; "></i>  </div>                                                                                
                                                                                                           </div>    
                                                                                                       </s:if>                                                              
                                                                                                   </td>
