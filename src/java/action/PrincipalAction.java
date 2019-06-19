@@ -247,11 +247,12 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             
             
             con.actualizarAlumnoEgreso(datos);
+            
+            
 
             ListaMunicipios = con.listaMunicipios();
             ListaTipoAlumno = con.ConsultaTipoAlumno();
             ListaAlumnos = (ArrayList<DatosBean>) con.listaAlumnos(datos);
-            
            
 
 

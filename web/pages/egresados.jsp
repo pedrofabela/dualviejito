@@ -41,6 +41,28 @@
                                                         document.formularioPrincipal.action = accion;
                                                         document.formularioPrincipal.submit();
                                                     }
+                                                     function Accion2(accion) {
+                                                         
+                                                         var fechacont="";
+                                                         var contratae="";
+                                                         var perfileg="";
+                                                         
+                                                      var fechacont=document.getElementById("fechcontrata").value;
+                                                      var contratae=document.getElementById("contrataue").value; 
+                                                      var perfileg=document.getElementById("perfilestudio").value; 
+                                                         
+                                                         if(fechacont.length>0 && contratae.length>0 && perfileg.length>0){
+                                                               document.formularioPrincipal.action = accion;
+                                                        document.formularioPrincipal.submit();
+                                                         }
+                                                         else{
+                                                             
+                                                             alert("Los campos de Fecha de Contratación, Trabaja en entidad económica y  Perfil de estudio, son campos obligatorios, favor de registrarlos");
+                                                             
+                                                         }
+                                                         
+                                                      
+                                                    }
 
                                                     function registroDual(accion, valor) {
 
@@ -343,7 +365,7 @@
                                                                                           <s:iterator value="ListaAlumnos" id="ListaAlumnos" status="stat">
                                                                                              
                                                                                               
-                                                                                              <s:if test="STATUS==10">
+                                                                                              <s:if test="STATUS==10 && FECHA_CONTRATA==null">
                                                                                               
                                                                                               <tr style="color: #666; font-size: 70%;">
                                                                                                   <td  ><s:property value="CURP"/></td>
@@ -378,7 +400,7 @@
                                                                                                             data-fechaingresodual='<s:property value="FECHA_INGRESO_DUAL"/>'
                                                                                                             data-cct='<s:property value="CCT"/>' 
                                                                                                             data-fechcontrata='<s:property value="FECHA_CONTRATA"/>'
-                                                                                                            data-contratoue='<s:property value="CONTRATO_UE"/>'
+                                                                                                            data-contrataue='<s:property value="CONTRATO_UE"/>'
                                                                                                             data-perfilestudio='<s:property value="PERFIL_ESTUDIO"/>'
                                                                                                              
                                                                                                             ><i class="fa fa-pen" style="font-size: 25px;  color: #004085; "></i>
@@ -547,11 +569,10 @@
                                                                                   
                                                                                   <div class="col-sm-auto">
                                                                                       
-                                                                                     <!--    <s:textfield name="datos.CONTRATO_UE" id="contratoue">  </s:textfield>
-                                                                                      
-                                                                                   <s:radio label="contrato" name="datos.CONTRATO_UE" list="#{'SI':'SI','NO':'NO'}"  id="contratoue" value=""  />-->
                                                                                    
-                                                                                  <s:radio label="Gender" name="datos.CONTRATO_UE2" list="ListaSINO"  listKey="ID_OP" listValue="OP" id="contratoue"  />
+                                                                                  
+                                                                                   <s:select  name="datos.CONTRATO_UE2" id="contrataue" list="ListaSINO"  listKey="ID_OP"  listValue="OP"  headerKey="" headerValue="--SELECCIONE--" cssClass="form-control " ></s:select>  
+                                                                                  
                                                                                    
                                                                                      
                                                                                   </div> 
@@ -565,8 +586,8 @@
                                                                                   
                                                                                   <div class="col-sm-auto">
                                                                                       
-                                                                                        <s:radio label="Gender2" name="datos.PERFIL_ESTUDIO2" list="ListaSINO"  listKey="ID_OP" listValue="OP" id="perfilestudio"  />
-                                                                                      
+                                                                                       
+                                                                                         <s:select  name="datos.PERFIL_ESTUDIO2" id="perfilestudio" list="ListaSINO"  listKey="ID_OP"  listValue="OP"  headerKey="" headerValue="--SELECCIONE--" cssClass="form-control " ></s:select> 
                                                                                    
                                                                                   
                                                                                     
@@ -671,7 +692,7 @@
                                                                           </div>        
                                                                           <div class="modal-footer">
                                                                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                              <a class="btn btn-primary" href="Javascript:Accion('actualizarAlumnoEgreso')">Actualizar</a>
+                                                                              <a class="btn btn-primary" href="Javascript:Accion2('actualizarAlumnoEgreso')">Actualizar</a>
                                                                           </div>                                         
                                                                       </div>
                                                                   </div>
@@ -844,9 +865,9 @@
                                                             var recipient17 = button.data('municipio')
                                                             var recipient18 = button.data('cct')
                                                             var recipient19 = button.data('fechaingresodual')
-                                                             var recipient20 = button.data('fechcontrata')
-                                                              var recipient21 = button.data('contratoue')
-                                                               var recipient22 = button.data('perfilestudio')
+                                                            var recipient20 = button.data('fechcontrata')
+                                                            var recipient21 = button.data('contrataue')
+                                                            var recipient22 = button.data('perfilestudio')
                                                                
                                                           
                                                             // Extract info from data-* a                                                                                                                                    ttributes
@@ -874,11 +895,11 @@
                                                                     modal.find('.modal-body #municipio').val(recipient17)
                                                                     modal.find('.modal-body #cct').val(recipient18)
                                                                     modal.find('.modal-body #fechaingresodual').val(recipient19)
-                                                                     modal.find('.modal-body #fechcontrata').val(recipient20)
-                                                                     modal.find('.modal-body #contratoue').val(recipient21)
-                                                                     modal.find('.modal-body #perfilestudio').val(recipient22)
+                                                                    modal.find('.modal-body #fechcontrata').val(recipient20)
+                                                                    modal.find('.modal-body #contrataue').val(recipient21)
+                                                                    modal.find('.modal-body #perfilestudio').val(recipient22)
 
-                                                                   
+                                                                  
 
                                                                   });
                                                                                                                            
@@ -887,7 +908,11 @@
                                                               <s:iterator value="ListaTipoAlumno" id="ListaTipoAlumno" status="stat">
                                                                   <s:hidden  name = "ListaTipoAlumno[%{#stat.index}].ID_TIPOALUM" id="ID_TIPOALUM"></s:hidden>
                                                                   <s:hidden  name = "ListaTipoAlumno[%{#stat.index}].NOM_TIPO" id="NOM_TIPO"></s:hidden>
-                                                              </s:iterator>       
+                                                              </s:iterator>   
+                                                               <s:iterator value="ListaSINO" id="ListaSINO" status="stat">
+                                                                  <s:hidden  name = "ListaSINO[%{#stat.index}].ID_OP" id="ID_OP"></s:hidden>
+                                                                  <s:hidden  name = "ListaSINO[%{#stat.index}].OP" id="OP"></s:hidden>
+                                                              </s:iterator>  
 
                                                           </s:form>
 

@@ -60,6 +60,11 @@ public class ConsultasBusiness {
         List lista = this.con.ConsultaTipoAlumno();
         return lista;
     }
+    
+     public List ConsultasituacionAlumno() throws Exception {
+        List lista = this.con.ConsultasituacionAlumno();
+        return lista;
+    }
 
     public List ConsultaDatos(DatosBean obj) throws Exception {
         List lista = this.con.ConsultaDatos(obj);

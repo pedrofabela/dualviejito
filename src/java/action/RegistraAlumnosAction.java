@@ -48,6 +48,7 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     private List<DatosBean> ListaTipoAlumno = new ArrayList<>();
 
     private List<DatosBean> VerificaAlumno = new ArrayList<>();
+      private List<DatosBean> ListaSituacionAlumno = new ArrayList<>();
 
     //SESSIN USUARIO	
     // private Map session  = ActionContext.getContext().getSession();
@@ -208,6 +209,8 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
                         ListaMunicipios = con.listaMunicipios();
                         ListaCarreras = con.ConsultaCarreraExistente(obj);
                         ListaTipoAlumno = con.ConsultaTipoAlumno();
+                        ListaSituacionAlumno = con.ConsultasituacionAlumno();
+                        System.out.println("Regrese y la lista tiene"+ ListaTipoAlumno.size());
 
                         al.setCURPA("");
 
@@ -557,5 +560,14 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     public void setVerificaAlumno(List<DatosBean> VerificaAlumno) {
         this.VerificaAlumno = VerificaAlumno;
     }
+
+    public List<DatosBean> getListaSituacionAlumno() {
+        return ListaSituacionAlumno;
+    }
+
+    public void setListaSituacionAlumno(List<DatosBean> ListaSituacionAlumno) {
+        this.ListaSituacionAlumno = ListaSituacionAlumno;
+    }
+    
 
 }

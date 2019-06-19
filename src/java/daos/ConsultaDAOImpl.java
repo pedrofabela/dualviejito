@@ -16,6 +16,7 @@ import mappers.AsesoresMapper;
 import mappers.BuscaRFCMapper;
 import mappers.CCTMapper;
 import mappers.CarrerasMapper;
+import mappers.ConsultaSituacionAcaMapper;
 import mappers.ConsultaTipoAlumnoMapper;
 import mappers.EstatusMapper;
 import mappers.Mapper;
@@ -131,6 +132,18 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         list = queryForList(query, new ConsultaTipoAlumnoMapper());
         return list;
     }
+    
+      public List ConsultasituacionAlumno() throws Exception {
+        String query = "select id_situacion_aca,nom_situacion from cat_situacion_aca";
+        Constantes.enviaMensajeConsola("obtiene catalogo de situacion academica----->" + query);
+        List list = null;
+        list = queryForList(query, new ConsultaSituacionAcaMapper());
+        return list;
+    }
+
+
+    
+    
 
     public boolean GuardaCarrera(DatosBean objdatos) throws Exception {
 

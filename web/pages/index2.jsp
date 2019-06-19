@@ -47,7 +47,7 @@
                                                         document.formularioPrincipal.CURPA.value = valor;
                                                         document.formularioPrincipal.action = accion;
                                                         document.formularioPrincipal.target = "_self";
-                                                        document.formularioPrincipal.submit();
+                                                        document.formularioPrincipal.submit();  
 
                                                     }
                                                     function registroBeca(accion, valor) {

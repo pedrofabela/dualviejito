@@ -37,6 +37,8 @@ public interface ConsultaDAO {
     public boolean EliminarCar(DatosBean dat) throws Exception;
 
     public List ConsultaTipoAlumno() throws Exception;
+    
+    public List ConsultasituacionAlumno() throws Exception;
 
     //******************************************************daos responsables*********************************************
     public List ConsultaResponsable(DatosBean obj) throws Exception;

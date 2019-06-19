@@ -156,6 +156,31 @@ public class DatosBean {
       private String OPNO;
        private String ID_OP;
         private String OP;
+        
+        
+        
+        private String ID_SITUACION_ACA;
+         private String NOM_SITUACION;
+
+    public String getID_SITUACION_ACA() {
+        return ID_SITUACION_ACA;
+    }
+
+    public void setID_SITUACION_ACA(String ID_SITUACION_ACA) {
+        this.ID_SITUACION_ACA = ID_SITUACION_ACA;
+    }
+
+    public String getNOM_SITUACION() {
+        return NOM_SITUACION;
+    }
+
+    public void setNOM_SITUACION(String NOM_SITUACION) {
+        this.NOM_SITUACION = NOM_SITUACION;
+    }
+         
+         
+         
+         
 
     public String getFECHA_CONTRATA2() {
         return FECHA_CONTRATA2;
