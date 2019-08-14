@@ -1436,9 +1436,9 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("PROMEDIO", "STRING", objdatos.getPROMEDIOGRAL());
         arregloCampos.add(temporal);
-        temporal = new ObjPrepareStatement("SITUACION_ACA", "STRING", objdatos.getSITUACIONACA().toUpperCase());
+        temporal = new ObjPrepareStatement("SITUACION_ACA", "STRING", objdatos.getSITUACIONACA());
         arregloCampos.add(temporal);
-        temporal = new ObjPrepareStatement("TIPO_ALUMNO", "STRING", objdatos.getTIPO_ALUM().toUpperCase());
+        temporal = new ObjPrepareStatement("TIPO_ALUMNO", "STRING", objdatos.getTIPO_ALUM());
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("STATUS", "STRING", objdatos.getSTATUS());
         arregloCampos.add(temporal);
@@ -1457,7 +1457,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 
 //Se terminan de adicionar a nuesto ArrayLis los objetos
 //Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
-        return oraDaoFac.queryInsert(Constantes.TablaAlumnos, arregloCampos);
+        return oraDaoFac.queryInsert("CAT_ALUMNOS", arregloCampos);
     }
 
     public boolean HabilitarAlumno(AlumnosBean objdatos) throws Exception {

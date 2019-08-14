@@ -584,7 +584,7 @@
                                                         <div class="row"  >
 
 
-                                                            <div class="form-group col-lg-4" style="padding: none;"  >
+                                                            <div class="form-group col-lg-2" style="padding: none;"  >
 
                                                                 <div style="background: #a2a3b8; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
 
@@ -608,7 +608,13 @@
                                                                 </div>
 
 
-                                                            </div>           
+                                                            </div>    
+                                                                        
+                                                                        
+                                                                         
+                                                                        
+                                                                        
+                                                                        
 
 
 
@@ -724,7 +730,33 @@
                                                                 </div>
 
 
-                                                            </div>        
+                                                            </div>      
+                                                                        
+                                                                         <div class="form-group col-lg-2" style="padding: none;"  >
+
+                                                                <div style="background:blue; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                    <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                        Contratados
+
+                                                                    </div>
+                                                                    <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                        0 <i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                    </div>
+                                                                    <a href="#" style="text-decoration: none; color:white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                            Detalle de Alumnos        ->
+
+                                                                        </div></a>
+
+
+                                                                </div>
+
+
+                                                            </div>      
 
 
 

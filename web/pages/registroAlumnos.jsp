@@ -471,6 +471,11 @@
                                                     <s:hidden  name = "ListaTipoAlumno[%{#stat.index}].ID_TIPOALUM" id="ID_TIPOALUM"></s:hidden>
                                                     <s:hidden  name = "ListaTipoAlumno[%{#stat.index}].NOM_TIPO" id="NOM_TIPO"></s:hidden>
                                                 </s:iterator>
+                                                
+                                                 <s:iterator value="ListaSituacionAlumno" id="ListaSituacionAlumno" status="stat">
+                                                    <s:hidden  name = "ListaSituacionAlumno[%{#stat.index}].ID_SITUACION_ACA" id="ID_SITUACION_ACA"></s:hidden>
+                                                    <s:hidden  name = "ListaSituacionAlumno[%{#stat.index}].NOM_SITUACION" id="NOM_SITUACION"></s:hidden>
+                                                </s:iterator>
 
 
                                             </s:form>

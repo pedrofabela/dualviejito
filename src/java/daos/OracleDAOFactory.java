@@ -33,8 +33,8 @@ public class OracleDAOFactory implements DAOFactory {
     private PreparedStatement pstmt;
 
     /// PRODUCCION
-     private String username = " U_EDUCADUAL";
-    private String url = "jdbc:oracle:thin:@10.33.220.209:1521:oraudai";
+    private String username = " U_EDUCADUAL";
+    private String url = "jdbc:oracle:thin:@10.33.220.169:1521:oraudai";
     private String password = "EDUC$DU4L";
    	//*/
     /*/DESARROLLO
