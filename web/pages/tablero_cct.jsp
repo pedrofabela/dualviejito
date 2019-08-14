@@ -746,7 +746,7 @@
                                                                     </div>
                                                                     <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
 
-                                                                        0 <i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+                                                                        <s:property value="datos.TOTAL_CONTRATADOS"/> <i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
 
                                                                     </div>
                                                                     <a href="#" style="text-decoration: none; color:white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
@@ -1752,8 +1752,6 @@
                                         </div>
                                     </div>     
 
-
-
                                     <div class="modal-wrapper" id="popup4">
                                         <div class="popup4-contenedor">
                                             <h2 style="color: #008080;" >Alumnos con Beca</h2>
@@ -1902,7 +1900,8 @@
                                             <a class="popup4-cerrar" href="#">X</a>
                                         </div>
                                     </div>     
-
+                                    
+                                     
 
 
 

@@ -5,11 +5,16 @@
  */
 package beans;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Giovani
  */
 public class ProyectoBean {
+    
+    
 //**********************************beans empresa*********************************** 
 public String RFCA;  
 public String RFC;
@@ -71,6 +76,9 @@ public String FECHA_EGRESO;
 public String FECHA_CIERRE; 
 public String FECHA_CAMBIO_STATUS;
 public String BECA;
+private String CAMBIO_ETIQUETA;
+private String CAMBIO_ETIQUETA2;
+private Date FECHAACTUAL= new Date(); 
 
 
 
@@ -484,6 +492,36 @@ public String BECA;
     public void setBECA(String BECA) {
         this.BECA = BECA;
     }
+
+    public String getCAMBIO_ETIQUETA() {
+        return CAMBIO_ETIQUETA;
+    }
+
+    public void setCAMBIO_ETIQUETA(String CAMBIO_ETIQUETA) {
+        this.CAMBIO_ETIQUETA = CAMBIO_ETIQUETA;
+    }
+
+    public String getCAMBIO_ETIQUETA2() {
+        return CAMBIO_ETIQUETA2;
+    }
+
+    public void setCAMBIO_ETIQUETA2(String CAMBIO_ETIQUETA2) {
+        this.CAMBIO_ETIQUETA2 = CAMBIO_ETIQUETA2;
+    }
+    
+    
+
+    public Date getFECHAACTUAL() {
+        return FECHAACTUAL;
+    }
+
+    public void setFECHAACTUAL(Date FECHAACTUAL) {
+        this.FECHAACTUAL = FECHAACTUAL;
+    }
+    
+    
+    
+    
     
     
     

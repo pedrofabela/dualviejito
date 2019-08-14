@@ -205,6 +205,12 @@ public class alumnosDashboardMapper implements Mapper {
         } else {
             dat.setFECHA_CAMBIO_ESTATUS(rs.getString("FECHA_CAMBIO_ESTATUS"));
         }
+        
+        if (rs.getString("CONTRATO_UE") != null) {
+            dat.setCONTRATO_UE(rs.getString("CONTRATO_UE").trim());
+        } else {
+            dat.setCONTRATO_UE(rs.getString("CONTRATO_UE"));
+        }
 
         if (rs.getString("ESTATUS_GENERAL") != null) {
             dat.setESTATUS_GENERAL(rs.getString("ESTATUS_GENERAL").trim());

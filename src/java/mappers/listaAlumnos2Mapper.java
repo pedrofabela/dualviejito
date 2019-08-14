@@ -55,6 +55,11 @@ public class listaAlumnos2Mapper implements Mapper {
         } else {
             dat.setCCT(rs.getString("CCT"));
         }
+        if (rs.getString("FECHA_INGRESO_DUAL") != null) {
+            dat.setFECHA_INGRESO_DUAL(rs.getString("FECHA_INGRESO_DUAL").trim());
+        } else {
+            dat.setFECHA_INGRESO_DUAL(rs.getString("FECHA_INGRESO_DUAL"));
+        } 
         
         
 

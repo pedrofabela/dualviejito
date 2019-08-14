@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -84,16 +85,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaProyectos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaReingresos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaMunicipioEscuela = new ArrayList<DatosBean>();
-            public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
-    
-    
-     public List<DatosBean> ListaCarreraAlumnos = new ArrayList<DatosBean>();
-    
-      public List<DatosBean> ListaAvanceMetas = new ArrayList<DatosBean>();
-          public List<DatosBean> ListaAlumnosNuevos = new ArrayList<DatosBean>();   
-           public List<DatosBean> ListaAlumnosReingresos = new ArrayList<DatosBean>();
-             public List<DatosBean> ListaSINO = new ArrayList<DatosBean>();
-                   
+    public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
+
+    public List<DatosBean> ListaCarreraAlumnos = new ArrayList<DatosBean>();
+
+    public List<DatosBean> ListaAvanceMetas = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaAlumnosNuevos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaAlumnosReingresos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaSINO = new ArrayList<DatosBean>();
 
     private boolean bantablero = false;
 
@@ -212,9 +211,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             return "ERROR";
         }
     }
-    
-    
-     public String actualizarAlumnoEgreso() {
+
+    public String actualizarAlumnoEgreso() {
         //validando session***********************************************************************
         if (session.get("cveUsuario") != null) {
             String sUsu = (String) session.get("cveUsuario");
@@ -234,27 +232,16 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             ConsultasBusiness con = new ConsultasBusiness();
 
             Constantes.enviaMensajeConsola("fecha recibe: " + datos.getFECHA_INGRESO_DUAL());
-            
-            System.out.println("checkbox"+datos.getCONTRATO_UE());
-            
-            
-           
+
+            System.out.println("checkbox" + datos.getCONTRATO_UE());
+
             ListaSINO = con.sino();
-            
-            
-            
-            
-            
-            
+
             con.actualizarAlumnoEgreso(datos);
-            
-            
 
             ListaMunicipios = con.listaMunicipios();
             ListaTipoAlumno = con.ConsultaTipoAlumno();
             ListaAlumnos = (ArrayList<DatosBean>) con.listaAlumnos(datos);
-           
-
 
             return "SUCCESS";
 
@@ -295,6 +282,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 datos.setCCT(obj.getCCT());
                 datos.setCURP(obj.getCURP());
                 datos.setCLAVECARRERA(obj.getCVE_CAR_RES());
+                datos.setFECHA_INGRESO_DUAL(obj.getFECHA_INGRESO_DUAL());
             }
 
             return "SUCCESS";
@@ -679,6 +667,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
         try {
             ConsultasBusiness con = new ConsultasBusiness();
+            SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
             BanBuscaRFC = true;
             BuscaRFC = (ArrayList<ProyectoBean>) con.buscaRFC(pro.getRFC());
             BanBuscaRFC = true;
@@ -711,6 +700,26 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             ListaResponsables = (ArrayList<ProyectoBean>) con.ConsultaResponsableI(datos.getCCT());
             ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT(), datos.getCLAVECARRERA());
             ListaEstatus = (ArrayList<ProyectoBean>) con.ConsultaEstatus();
+            
+            String FechaSistema="19/08/2019";
+            
+            
+            Constantes.enviaMensajeConsola("fecha de ingreso: "+datos.getFECHA_INGRESO_DUAL());
+            
+            String Resultado=compararFechasConDate(datos.getFECHA_INGRESO_DUAL(), FechaSistema);
+            
+            Constantes.enviaMensajeConsola("Resultado: "+Resultado);
+            
+            
+            if (Resultado.equals("0")) {
+                
+                pro.setCAMBIO_ETIQUETA("CONVENIO");
+                
+            }else if (Resultado.equals("1") || Resultado.equals("2")) {
+                 pro.setCAMBIO_ETIQUETA("Formato de Seguimiento y Evaluación al Plan de Formación del Estudiante Dual");
+            }
+            
+            
 
             BanRegistraProyecto = true;
 
@@ -950,12 +959,38 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 datos.setCCT(obj.getCCT());
                 datos.setCURP(obj.getCURP());
                 datos.setCLAVECARRERA(obj.getCVE_CAR_RES());
+                datos.setFECHA_INGRESO_DUAL(obj.getFECHA_INGRESO_DUAL());
             }
 
             ListaResponsables = (ArrayList<ProyectoBean>) con.ConsultaResponsableI(datos.getCCT());
             ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT(), datos.getCLAVECARRERA());
             ListaEstatus = (ArrayList<ProyectoBean>) con.ConsultaEstatus();
             pro = con.ConsultaProyecto(datos.getCURP());
+             String FechaSistema="19/08/2019";
+            
+            
+            Constantes.enviaMensajeConsola("fecha de ingreso: "+datos.getFECHA_INGRESO_DUAL());
+            
+            String Resultado=compararFechasConDate(datos.getFECHA_INGRESO_DUAL(), FechaSistema);
+            
+            Constantes.enviaMensajeConsola("Resultado: "+Resultado);
+            
+            
+            if (Resultado.equals("0")) {
+                 Constantes.enviaMensajeConsola("entro a opcionn 1");
+                pro.setCAMBIO_ETIQUETA("CONVENIO");
+                pro.setCAMBIO_ETIQUETA2("CONVENIO REGISTRADO");
+                
+            }else if (Resultado.equals("1") || Resultado.equals("2")) {
+                
+                   Constantes.enviaMensajeConsola("entro a opcionn 2");
+                
+                 pro.setCAMBIO_ETIQUETA("Formato de Seguimiento y Evaluación al Plan de Formación del Estudiante Dual");
+                 pro.setCAMBIO_ETIQUETA2("Formato Registrado");
+            }
+            
+            
+            
 
             return "SUCCESS";
 
@@ -1468,10 +1503,10 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
 
             bantablero = true;
-            
-             filtro=usuariocons.getFILTRO();
-                
-                datos.setFILTRO(filtro);
+
+            filtro = usuariocons.getFILTRO();
+
+            datos.setFILTRO(filtro);
 
             Constantes.enviaMensajeConsola("FECHA INICIO" + datos.getFECHA_INICIO());
             Constantes.enviaMensajeConsola("FECHA termino" + datos.getFECHA_TERMINO());
@@ -1529,14 +1564,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     egresados = egresados + 1;
                 }
 
-               /* if (obj.getFECHA_REG() != null) {
+                /* if (obj.getFECHA_REG() != null) {
                     fechaReg = format.parse(obj.getFECHA_REG());
                     if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                         nuevos = nuevos + 1;
                     }
                 }*/
-
                 if (obj.getTIPO_ALUMNO().equals("2")) {
 
                     tipo_alu = tipo_alu + 1;
@@ -1630,13 +1664,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
             ListaTotalEstatus = con.listaTotalEstatus(datos);
             ListaTotalEsuela = con.listaTotalEscuela(datos);
-               ListaCarreraAlumnos = con.listaCarreraAlu(datos);
-                    
-                    ListaAvanceMetas= con.listaAvanceMetas(datos);
-                    
-                       ListaAlumnosNuevos= con.listaAlumnosNuevos(datos);
-                       
-                         ListaAlumnosReingresos= con.listaAlumnosReingreso(datos);
+            ListaCarreraAlumnos = con.listaCarreraAlu(datos);
+
+            ListaAvanceMetas = con.listaAvanceMetas(datos);
+
+            ListaAlumnosNuevos = con.listaAlumnosNuevos(datos);
+
+            ListaAlumnosReingresos = con.listaAlumnosReingreso(datos);
 
             return "SUCCESS";
 
@@ -1719,6 +1753,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             int nuevos = 0;
             int tipo_alu = 0;
             int beca = 0;
+            int contratados=0;
             Date fechaReg = null;
 
             Date fechainicio = null;
@@ -1754,14 +1789,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     egresados = egresados + 1;
                 }
 
-            /*    if (obj.getFECHA_REG() != null) {
+                /*    if (obj.getFECHA_REG() != null) {
                     fechaReg = format.parse(obj.getFECHA_REG());
                     if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                         nuevos = nuevos + 1;
                     }
                 }*/
-
                 if (obj.getTIPO_ALUMNO().equals("2")) {
 
                     tipo_alu = tipo_alu + 1;
@@ -1821,6 +1855,11 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     beca = beca + 1;
                 }
+                if (obj2.getCONTRATO_UE() != null) {
+                            
+                            contratados = contratados + 1;
+                            Constantes.enviaMensajeConsola("entro a contratados"+contratados); 
+                        }
 
             }
 
@@ -1831,6 +1870,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setTOTAL_HOMBRE_GENERAL(String.valueOf(hombre));
             datos.setTOTAL_MUJER_GENERAL(String.valueOf(mujer));
             datos.setTOTAL_BECA_GENERAL(String.valueOf(beca));
+            datos.setTOTAL_CONTRATADOS(String.valueOf(contratados));
 
             ListaTotalEstatusUGeneral = con.listaTotalEstatusUGeneral(datos);
 
@@ -1854,23 +1894,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 datos.setTOTAL_BECAS(obj3.getTOTAL_BECAS());
 
             }
-           
-            
-            
+
             ListaCarreraAlumnos = con.listaCarreraAluEsc(datos);
 
             ListaAlumnosNuevos = con.listaAlumnosNuevosEsc(datos);
 
             ListaAlumnosReingresos = con.listaAlumnosReingresoEsc(datos);
-            
-            
-            ListaAvanceMetas= con.listaAvanceMetasEsc(datos);
-            
-            
-            
-            
-            
-            
+
+            ListaAvanceMetas = con.listaAvanceMetasEsc(datos);
 
             return "SUCCESS";
 
@@ -1969,7 +2000,35 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
         pro.setREP_LEGAL("");
 
     }
-
+    
+    private String compararFechasConDate(String fecha1, String fechaActual) {  
+  System.out.println("Parametro String Fecha 1 = "+fecha1+"\n" +
+    "Parametro String fechaActual = "+fechaActual+"\n");  
+  String resultado="";
+  try {
+   /**Obtenemos las fechas enviadas en el formato a comparar*/
+   SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy"); 
+   Date fechaDate1 = formateador.parse(fecha1);
+   Date fechaDate2 = formateador.parse(fechaActual);
+    
+   System.out.println("Parametro Date Fecha 1 = "+fechaDate1+"\n" +
+     "Parametro Date fechaActual = "+fechaDate2+"\n");
+    
+    if ( fechaDate1.before(fechaDate2) ){
+    resultado= "0";//0 Fecha Ingreso es menor
+    }else{
+     if ( fechaDate2.before(fechaDate1) ){
+      resultado= "1";//1 Fecha Ingreso es Mayor 
+     }else{
+      resultado= "2";// 2 Fecha Ingreso Son iguales 
+     } 
+    }
+  } catch (ParseException e) {
+   System.out.println("Se Produjo un Error!!!  "+e.getMessage());
+  }  
+  return resultado;
+ }
+    
     public usuarioBean getUsuariocons() {
         return usuariocons;
     }
@@ -2489,7 +2548,5 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public void setListaSINO(List<DatosBean> ListaSINO) {
         this.ListaSINO = ListaSINO;
     }
-    
-    
 
 }

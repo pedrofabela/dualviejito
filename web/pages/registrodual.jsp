@@ -175,6 +175,7 @@
                                                     <s:textfield name="datos.CCT" id="datos.CCT" cssStyle="display:none;"></s:textfield>  
                                                     <s:textfield name="datos.CURP" id="datos.CURP" cssStyle="display:none;"></s:textfield>  
                                                     <s:textfield name="datos.CLAVECARRERA" id="datos.CLAVECARRERA" cssStyle="display:none;"></s:textfield>  
+                                                    <s:textfield name="datos.FECHA_INGRESO_DUAL" id="datos.FECHA_INGRESO_DUAL" cssStyle="display:none;"></s:textfield>
 
                                                         <tr>
                                                             <td class="text-center bg-primary" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" colspan="4"><h5>DATOS DE LA EMPRESA</h5></td>
@@ -491,7 +492,8 @@
                                                                                     </div> 
                                                                                 </div> 
                                                                                 <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label text-muted" for="REPLEGAL">CONVENIO</label>
+                                                                                    <label class="col-form-label text-muted" for="REPLEGAL"><s:property value="pro.CAMBIO_ETIQUETA"></s:property></label>
+                                                                                    <s:hidden name="pro.CAMBIO_ETIQUETA" id="%{pro.CAMBIO_ETIQUETA}"></s:hidden>
                                                                                     <div class="col-sm-auto">
                                                                                         <s:file cssClass="text-muted"  name="archi" id="archi" accept=" application/pdf" title="Solo archivos con extension PDF" />
 

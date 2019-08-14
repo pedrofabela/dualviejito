@@ -62,11 +62,11 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaMunicipioEscuela = new ArrayList<DatosBean>();
     public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEstatusUGeneral = new ArrayList<DatosBean>();
-     public List<DatosBean> ListaCarreraAlumnos = new ArrayList<DatosBean>();
-       public List<DatosBean> ListaAvanceMetas = new ArrayList<DatosBean>();
-         public List<DatosBean> ListaAlumnosNuevos = new ArrayList<DatosBean>();
-           public List<DatosBean> ListaAlumnosReingresos = new ArrayList<DatosBean>();
- public List<DatosBean> ListaSINO = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaCarreraAlumnos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaAvanceMetas = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaAlumnosNuevos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaAlumnosReingresos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaSINO = new ArrayList<DatosBean>();
     private boolean bantablero = false;
 
     //SESSIN USUARIO	
@@ -114,11 +114,9 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
                 //obteniendo el nombre del usuario
                 nombreUsuario = usuariocons.getNAMEUSUARIO();
-                filtro=usuariocons.getFILTRO();
-                
+                filtro = usuariocons.getFILTRO();
+
                 datos.setFILTRO(filtro);
-                        
-                
 
                 modulosAUX = (ArrayList<moduloBean>) acceso.consultaModulosPerfilMenu(usuariocons.getPERFIL(), modulo);
                 modulosAUXP = (ArrayList<moduloAuxBean>) acceso.consultaModulosHijosPerfilMenu(usuariocons.getPERFIL(), modulo);
@@ -158,6 +156,7 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     int nuevos = 0;
                     int tipo_alu = 0;
                     int beca = 0;
+                    int contratados = 0;
 
                     Date fechaReg = null;
                     Date fechainicio = null;
@@ -195,14 +194,13 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                             egresados = egresados + 1;
                         }
 
-                   /*     if (obj.getFECHA_REG() != null) {
+                        /*     if (obj.getFECHA_REG() != null) {
                             fechaReg = format.parse(obj.getFECHA_REG());
                             if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                                 nuevos = nuevos + 1;
                             }
                         }*/
-
                         if (obj.getTIPO_ALUMNO().equals("2")) {
 
                             tipo_alu = tipo_alu + 1;
@@ -227,10 +225,14 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     hombre = 0;
                     mujer = 0;
                     beca = 0;
+                    contratados=0;
                     
+
                     System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5");
 
                     ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardGeneral(datos);
+                    
+                    Constantes.enviaMensajeConsola("tam lista: "+ListaAlumnosDashboardUGeneral.size());
 
                     Iterator LADUG = ListaAlumnosDashboardUGeneral.iterator();
                     DatosBean obj2;
@@ -264,6 +266,13 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
                             beca = beca + 1;
                         }
+                        Constantes.enviaMensajeConsola("entro a contratados"+obj2.getCONTRATO_UE());
+                        if (obj2.getCONTRATO_UE() != null) {
+                            
+                            contratados = contratados + 1;
+                            Constantes.enviaMensajeConsola("entro a contratados"+contratados); 
+                        }
+                        
 
                     }
 
@@ -274,17 +283,14 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     datos.setTOTAL_HOMBRE_GENERAL(String.valueOf(hombre));
                     datos.setTOTAL_MUJER_GENERAL(String.valueOf(mujer));
                     datos.setTOTAL_BECA_GENERAL(String.valueOf(beca));
+                    datos.setTOTAL_CONTRATADOS(String.valueOf(contratados));
 
                     ListaTotalEstatusUGeneral = con.listaTotalEstatusGeneral(datos);
 
                     ListaMunicipioEscuela = con.listaMunEscGeneral(datos);
-                    
-                    
-                    
+
                     ListaEmpresasAlumnos = con.listaEmpAluGeneral(datos);
 
-                   
-                    
                     System.out.println("voy a calcular proyectos");
                     ListaProyectos = con.proyectosGeneral(datos);
 
@@ -302,23 +308,17 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     }
 
                     ListaTotalEstatus = con.listaTotalEstatus(datos);
-                     /*aqui me quede */
-                     
+                    /*aqui me quede */
+
                     ListaTotalEsuela = con.listaTotalEscuela(datos);
-                    
-                    
+
                     ListaCarreraAlumnos = con.listaCarreraAlu(datos);
-                    
-                    ListaAvanceMetas= con.listaAvanceMetas(datos);
-                    
-                    ListaAlumnosNuevos= con.listaAlumnosNuevos(datos);
-                       
-                    ListaAlumnosReingresos= con.listaAlumnosReingreso(datos);
-                    
-                    
-                  
-                    
-                    
+
+                    ListaAvanceMetas = con.listaAvanceMetas(datos);
+
+                    ListaAlumnosNuevos = con.listaAlumnosNuevos(datos);
+
+                    ListaAlumnosReingresos = con.listaAlumnosReingreso(datos);
 
                     return "SUCCESS3";
 
@@ -377,9 +377,8 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                                 ListaAlumnos = (ArrayList<DatosBean>) con.listaAlumnos(datos);
                                 ListaTipoAlumno = con.ConsultaTipoAlumno();
                                 ListaAlumnosBeca = (ArrayList<DatosBean>) con.listaAlumnosBeca(datos);
-                               ListaSINO = con.sino();
-                                System.out.println("SINO"+ListaSINO.size());
-                    
+                                ListaSINO = con.sino();
+                                System.out.println("SINO" + ListaSINO.size());
 
                                 return "SUCCESS2";
 
@@ -548,14 +547,13 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                             egresados = egresados + 1;
                         }
 
-                      /*  if (obj.getFECHA_REG() != null) {
+                        /*  if (obj.getFECHA_REG() != null) {
                             fechaReg = format.parse(obj.getFECHA_REG());
                             if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                                 nuevos = nuevos + 1;
                             }
                         }*/
-
                         if (obj.getTIPO_ALUMNO().equals("2")) {
 
                             tipo_alu = tipo_alu + 1;
@@ -772,14 +770,13 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                             egresados = egresados + 1;
                         }
 
-                      /*  if (obj.getFECHA_REG() != null) {
+                        /*  if (obj.getFECHA_REG() != null) {
                             fechaReg = format.parse(obj.getFECHA_REG());
                             if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                                 nuevos = nuevos + 1;
                             }
                         }*/
-
                         if (obj.getTIPO_ALUMNO().equals("2")) {
 
                             tipo_alu = tipo_alu + 1;
@@ -947,12 +944,6 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public void setListaCarreraAlumnos(List<DatosBean> ListaCarreraAlumnos) {
         this.ListaCarreraAlumnos = ListaCarreraAlumnos;
     }
-    
-    
-    
-    
-    
-    
 
     public usuarioBean getUsuariocons() {
         return usuariocons;
@@ -1274,8 +1265,5 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public void setListaSINO(List<DatosBean> ListaSINO) {
         this.ListaSINO = ListaSINO;
     }
-    
-    
-    
 
 }
