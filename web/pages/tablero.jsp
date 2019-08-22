@@ -746,7 +746,7 @@
                                                                         <s:property value="datos.TOTAL_CONTRATADOS"/><i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
 
                                                                     </div>
-                                                                    <a href="#" style="text-decoration: none; color:white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+                                                                    <a href="#popup30" style="text-decoration: none; color:white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
 
                                                                             Detalle de Alumnos        ->
 
@@ -2489,6 +2489,160 @@
                                         </div>
                                     </div>               
                                     
+                                    
+                                    
+                                    <div class="modal-wrapper" id="popup30">
+                                        <div class="popup30-contenedor">
+                                            <h2 style="color: #A5DF00;" >Contratados</h2>
+
+                                            <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
+
+
+                                                <div id="dvData30">  
+
+
+                                                    <table id="customers" style="text-align: justify;">
+
+
+                                                        <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
+
+
+                                                            <table id="customers" style=" font-size: 12px;">
+
+                                                                <tr>
+                                                                    <td colspan="28" align="center" style="background: grey; color: white;" >Total de Alumnos DUAL</td>
+                                                                </tr>
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    
+                                                                     <td style="width: 10%;">Matricula</td>
+                                                                    <td style="width: 10%;">CURP</td>
+                                                                    
+                                                                    <td style="width: 50%;">Nombre</td>
+                                                                    <td style="width: 10%;">Clave carrera</td>
+                                                                    <td style="width: 10%;">Nombre carrera</td>
+
+                                                                    <td style="width: 10%;">Género</td>
+                                                                     <td style="width: 10%;">Fecha nacimineto</td>
+                                                                    <td style="width: 10%;">Domicilio</td>
+                                                                    
+                                                                    <td style="width: 10%;">Colonia</td>
+                                                                    <td style="width: 10%;">Teléfono</td>  
+                                                                    <td style="width: 10%;">CP</td>
+                                                                    <td style="width: 10%;">Correo</td>
+
+                                                                    <td style="width: 10%;">Grado</td>
+                                                                     <td style="width: 10%;">Promedio</td>
+                                                                    <td style="width: 10%;">Situación académica</td>
+                                                                    
+                                                                    <td style="width: 10%;">Tipo Alumno</td>
+                                                                    <td style="width: 10%;">Estatus</td>
+                                                                    <td style="width: 10%;">CCT</td>
+
+                                                                    <td style="width: 10%;">Escuela</td>
+                                                                     <td style="width: 10%;">Municipio</td>
+                                                                     
+                                                                 
+                                                                    
+                                                                    <td style="width: 10%;">Fecha registro</td>
+                                                                    
+                                                                    <td style="width: 10%;">Beca</td>
+                                                                    <td style="width: 10%;">Fecha ingreso DUAL</td>
+
+                                                                    <td style="width: 10%;">Fecha Reingreso</td>
+                                                                      <td style="width: 10%;">Fecha Egreso</td>
+                                                                      <td style="width: 10%;">Fecha cambio estatus</td>
+                                                                      <td style="width: 10%;">Estatus General</td>
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
+
+                                                                    <s:if test="CONTRATO_UE==1">
+
+                                                                    <tr style=" background: #efeaf0; font-size: 8px;">
+                                                                       
+                                                                        <td style="width: 10%;"><s:property value="MATRICULA"/></td>
+                                                                        <td style="width: 50%;"><s:property value="CURP"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="CVE_CAARRERA" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="NOMBRE_CARRERA" /></td>
+                                                                        <td style="width: 10%;"><s:property value="SEXO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECNAC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="DOMICILIOA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="COLONIA" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="TELEFONO" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CP" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CORREO" /></td>
+                                                                        
+                                                                        <td style="width: 10%;"><s:property value="GRADO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="PROMEDIOGRAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="SITUACIONACA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="TIPO_ALUMNO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="STATUS" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMESC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="MUNICIPIO"/></td>
+                                                                       
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_REG" /></td>
+                                                                        <td style="width: 10%;"><s:property value="BECA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_INGRESO_DUAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_REINGRESO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_EGRESO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_CAMBIO_ESTATUS" /></td>
+                                                                        <td style="width: 10%;"><s:property value="ESTATUS_GENERAL"/></td>
+                                                                      
+
+                                                                    </tr>
+                                                                        </s:if>
+
+                                                                </s:iterator>
+                                                            </s:if>
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+
+                                                    </table>
+
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
+
+                                                        <center>
+
+                                                            <input  align="top" type="image" id="btnExport30"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport30").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData23').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+
+                                                    </s:if>
+
+
+
+
+
+                                                </div>
+                                            </div>
+
+                                            <a class="popup20-cerrar" href="#">X</a>
+                                        </div>
+                                    </div>               
                                     
                                     
                                     
